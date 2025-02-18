@@ -1,51 +1,97 @@
 const products = [
-    { id: 1, name: "Product1",desc:"Description of product1" ,price: 25 },
-    { id: 2, name: "Product2",desc:"Description of product2" ,price: 45 },
-    { id: 3, name: "Product3",desc:"Description of product3" , price: 30 },
-  ];
-  const cart = {};//dict-key:value
-  let users = [];
-let user = {}
-// let useremail = "";
-// let username = "";
-// let currBalance = 0;
-document.write("<div id=root></div>");
-  const addToCart = (id) => {
-    if(!cart[id]) cart[id] = 1;
-   // card[id] = 1;
-    console.log(cart);
-    showCart();
-  };
+  {
+    id: 1,
+    name: "Product 1",
+    desc: "Description of the product. Description of the product. ",
+    price: 25,
+  },
+  {
+    id: 2,
+    name: "Product 2",
+    desc: "Description of the product. Description of the product. ",
+    price: 45,
+  },
+  {
+    id: 3,
+    name: "Product 3",
+    desc: "Description of the product. Description of the product. ",
+    price: 30,
+  },
+];
+const cart = {};
+let users = [];
+let user = {};
+const addToCart = (id) => {
+  if (!cart[id]) cart[id] = 1;
+  showCart();
+};
+const increment = (id) => {
+  cart[id] = cart[id] + 1;
+  showCart();
+};
+const decrement = (id) => {
+  cart[id] = cart[id] - 1;
+  cart[id] < 1 && delete cart[id];
+  console.log(cart);
+  showCart();
+};
+const showTotal = () => {
+  let total = products.reduce((sum, value) => {
+    return sum + value.price * (cart[value.id] ? cart[value.id] : 0);
+  }, 0);
 
-  const showCart = () => {
-    let str = "";
-    products.map((value) => {
-      if (cart[value.id]) {
-        str += `
-        <li>${value.name}-$${value.price}-<button onclick="minus(${value.id})">-</button>${cart[value.id]}<button onclick="plus(${value.id})">+</button>-${value.price*cart[value.id]}</li>
+  divTotal.innerHTML = `Order Value: $${total}`;
+};
+
+const showMain = () => {
+  let str = `
+  <div class="container">
+      <div class="header">
+        <h1>My Store</h1>
+        <h4 onclick="displayCart()">Cart:<span id="items"></span></h4>
+      </div>
+      <div class="productBlock">
+        <div id="divProducts"></div>
+      </div>
+      <div id="divCartBlock" class="cartBlock">
+        <h3>My Cart</h3>
+        <div id="divCart"></div>
+        <div id="divTotal"></div>
+        <button onclick="hideCart()">Close</button>
+      </div>
+        <hr>
+    <h4>@Copyright 2025. All rights reserved.</h4>
+    </div>
+  `;
+  root.innerHTML = str;
+  showProducts();
+};
+
+const showCart = () => {
+  let str = "";
+  products.map((value) => {
+    if (cart[value.id]) {
+      str += `
+        <li>${value.name}-$${value.price}-<button onclick='decrement(${
+        value.id
+      })'>-</button>${cart[value.id]}<button onclick='increment(${
+        value.id
+      })'>+</button>-$${value.price * cart[value.id]}</li>
         `;
-        
-      }
-    });
-    divCart.innerHTML = str;
-    let count=Object.keys(cart).length
-    items.innerHTML=count
-    showTotal()
-  };
-const plus =(id)=>{
-    cart[id]++;
-    showCart();
-    
-}
-const minus =(id)=>{
-    if (cart[id] > 1) {
-    cart[id]--; // Decrease quantity
-    } else {
-    delete cart[id]; // Remove item if quantity reaches 0
     }
-    showCart();
-    
-}
+  });
+  divCart.innerHTML = str;
+  let count = Object.keys(cart).length;
+  items.innerHTML = count;
+  showTotal();
+};
+const displayCart = () => {
+  divCartBlock.style.left = "80%";
+};
+const hideCart = () => {
+  divCartBlock.style.left = "100%";
+};
+
 function showLogin() {
   let str = `
   <div>
@@ -59,6 +105,7 @@ function showLogin() {
   `;
   root.innerHTML = str;
 }
+
 function showForm() {
   let str = `
   <h2>Registration Form</h2>
@@ -71,6 +118,7 @@ function showForm() {
   `;
   root.innerHTML = str;
 }
+
 function chkUser() {
   let email = document.getElementById("email").value;
   let password = document.getElementById("password").value;
@@ -79,14 +127,15 @@ function chkUser() {
       // useremail = email;
       // username = users[i].name;
       // currBalance = users[i].balance;
-      user = users[i]
-      showProducts();
+      user = users[i];
+      showMain();
       break;
     } else {
       msg.innerHTML = "Access Denied";
     }
   }
 }
+
 function addUser() {
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
@@ -103,37 +152,17 @@ function addUser() {
   showLogin();
 }
 
-  const showProducts = () => {
-    let str = "<div class='row'>";
-    products.map((value) => {
-      str += `
-      <div class="box">
+const showProducts = () => {
+  let str = "<div class='row'>";
+  products.map((value) => {
+    str += `
+      <div class='box'>
       <h3>${value.name}</h3>
       <p>${value.desc}</p>
       <h4>$${value.price}</h4>
-      <button onclick=addToCart(${value.id})>Add to Cart</button></div>
+      <button onclick=addToCart(${value.id})>Add to Cart</button>
+      </div>
       `;
-    });
-    divProducts.innerHTML = str + "</div>";
-  };
-  
-  const showTotal=()=>{
-    let total=products.reduce((sum,value)=>{
-    //     if(cart[value.id]){
-    //         return sum + value.price * cart[value.id];
-    //     }
-    //     return sum;
-    // },0)
-    return sum + value.price * (cart[value.id]?cart[value.id]:0);
-    },0)
-divTotal.innerHTML=`<h3>Total: $${total}</h3>`;
-  }
-
-  const displayCart = () => {
-    //divCartBlock.style.display="block"
-divCartBlock.style.left= "70%";
+  });
+  divProducts.innerHTML = str + "</div>";
 };
-const hideCart =() =>{
-    //divCartBlock.style.display = "none";
-    divCartBlock.style.left = "100%";
-}
