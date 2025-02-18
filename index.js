@@ -49,6 +49,7 @@ const showMain = () => {
       <div class="header">
         <h1>My Store</h1>
         <h4 onclick="displayCart()">Cart:<span id="items"></span></h4>
+        <button onclick='showLogin()'>Logout</button>
       </div>
       <div class="productBlock">
         <div id="divProducts"></div>
