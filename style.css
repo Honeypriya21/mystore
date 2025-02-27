@@ -23,7 +23,7 @@
       background-color: white;
       margin: 10px;
       border-radius: 20px;
-      padding: 10px;
+      padding: 30px;
   }
   .cartBlock {
       background-color: silver;
@@ -38,28 +38,31 @@
   
   .login {
       border: 1px solid black;
-      text-align: center;
-      padding: 100px;
-      margin: 10px;
-    
+      padding: 50px;
+      width: 500px;
+      margin: auto;
+   
   }
   
   .login input,button{
       margin: 10px;
       padding: 10px;
+      box-sizing: border-box;
   }
   
   .registration {
       border: 1px solid black;
       text-align: center;
-      padding: 100px;
-      margin: 10px;
+      padding: 50px;
+      width: 500px;
+      margin: auto;
   
   }
   
   .registration input,button{
       margin: 10px;
       padding: 10px;
+      box-sizing: border-box;
   }
   
   .menu li {

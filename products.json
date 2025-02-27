@@ -1,56 +1,44 @@
 [
-    {
-      "id": 1,
-      "name": "Product 1",
+  {
+    "id": 1,
+    "name": "Ninja Hattori",
+    "image": "images/pic1.webp",
+    "desc": "Description of the product. Description of the product. ",
+    "price": 25
+  },
+  {
+    "id": 2,
+    "name": "Ninja Hattori",
+    "image": "images/pic2.webp",
+    "desc": "Description of the product. Description of the product. ",
+    "price": 45
+  },
+  {
+    "id": 3,
+    "name": "Product 3",
+    "image":"images/pic3.jpg",
+    "desc": "Description of the product. Description of the product. ",
+    "price": 30
+  },
+  {
+      "id": 4,
+      "name": "Product 4",
+      "image":"images/pic4.jpg",
       "desc": "Description of the product. Description of the product. ",
-      "price": 25
+      "price": 60
     },
     {
-      "id": 2,
-      "name": "Product 2",
-      "desc": "Description of the product. Description of the product. ",
-      "price": 45
-    },
-    {
-      "id": 3,
-      "name": "Product 3",
+      "id": 5,
+      "name": "Product 5",
+      "image":"images/pic5.jpeg",
       "desc": "Description of the product. Description of the product. ",
       "price": 30
     },
     {
-        "id": 4,
-        "name": "Product 4",
-        "desc": "Description of the product. Description of the product. ",
-        "price": 75
-      },
-      {
-        "id": 5,
-        "name": "Product 5",
-        "desc": "Description of the product. Description of the product. ",
-        "price": 95
-      },
-      {
-        "id": 6,
-        "name": "Product 6",
-        "desc": "Description of the product. Description of the product. ",
-        "price": 20
-      },
-      {
-        "id": 7,
-        "name": "Product 7",
-        "desc": "Description of the product. Description of the product. ",
-        "price": 35
-      },
-      {
-        "id": 8,
-        "name": "Product 8",
-        "desc": "Description of the product. Description of the product. ",
-        "price": 67
-      },
-      {
-        "id": 9,
-        "name": "Product 9",
-        "desc": "Description of the product. Description of the product. ",
-        "price": 89
-      }
-  ]
+      "id": 6,
+      "name": "Product 6",
+      "image":"images/pic6.webp",
+      "desc": "Description of the product. Description of the product. ",
+      "price": 45
+    }
+]
